@@ -2,11 +2,17 @@
   "name": "lab1_endian",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "script.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node script.js"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "bn.js": "^5.2.0",
+    "bytebuffer": "^5.0.1",
+    "chalk": "^5.0.0"
+  }
 }

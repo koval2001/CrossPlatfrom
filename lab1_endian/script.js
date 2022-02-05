@@ -1,9 +1,27 @@
-const endianCode = require('endian-code');
+import chalk from 'chalk';
+import endianCode from 'endian-code';
 
-console.log("Library: ", endianCode.encode(0x11869F, 3, false).map(x => x.toString(16)));
+// From Low Endian to Big Endian
+// Library Usage
+const lowEndianArray = [0x9F8611, 0x10869F, 0x1444F2, 0x2A3331, 0xB1234A];
+const bigEndianArray = [0x11869F, 0x9F8610, 0xF24414, 0x31332A, 0x4A23B1];
+console.log(chalk.bgBlue.bold("Library Examples:"));
 
-let a = 1148575;
+console.log("Converting low endian numbers to big endian numbers:");
+lowEndianArray.map(el => {
+  const reversedArray = endianCode.encode(el, 3, true).map(x => x.toString(16)).reverse();
+  const bigEndianNumber = parseInt(reversedArray.join(''), 16);
+  console.log(el, ": ", bigEndianNumber);
+})
 
+console.log("Converting big endian numbers to low endian numbers:");
+bigEndianArray.map(el => {
+  const reversedArray = endianCode.encode(el, 3, true).map(x => x.toString(16)).reverse();
+  const lowEndianNumber = parseInt(reversedArray.join(''), 16);
+  console.log(el, ": ", lowEndianNumber);
+})
+
+// Without library
 function decimalToHexString(number)
 {
   if (number < 0)
@@ -29,13 +47,22 @@ function bytesToHex(bytes) {
   return hex.join("");
 }
 
-const hexA = decimalToHexString(a);
-const ByteArrayA = hexToBytes(hexA);
-const reverseByteArrayA = ByteArrayA.reverse();
-const newByteArrayA = bytesToHex(reverseByteArrayA);
+function convertEndianNumber(el) {
+  const hexNumber = decimalToHexString(el);
+  const ByteArray = hexToBytes(hexNumber);
+  const reverseByteArray = ByteArray.reverse();
+  const newByteArray = bytesToHex(reverseByteArray);
 
-console.log(hexA);
-console.log(ByteArrayA);
-console.log(reverseByteArrayA);
-console.log(newByteArrayA);
-console.log(parseInt(newByteArrayA,16))
+  return parseInt(newByteArray,16);
+}
+
+console.log(chalk.bgRed.bold("Examples without using library:"));
+console.log("Converting low endian numbers to big endian numbers:");
+lowEndianArray.map(el => {
+  console.log(el, ": ", convertEndianNumber(el));
+});
+
+console.log("Converting big endian numbers to low endian numbers:");
+bigEndianArray.map(el => {
+  console.log(el, ": ", convertEndianNumber(el));
+});

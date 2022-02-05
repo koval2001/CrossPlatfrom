@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@stdlib/number-uint32-base-to-binary-string": "0.0.6",
     "bn.js": "^5.2.0",
     "bytebuffer": "^5.0.1",
     "chalk": "^5.0.0",

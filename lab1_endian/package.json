@@ -13,6 +13,10 @@
   "dependencies": {
     "bn.js": "^5.2.0",
     "bytebuffer": "^5.0.1",
-    "chalk": "^5.0.0"
+    "chalk": "^5.0.0",
+    "convert-endianness": "^1.0.0",
+    "endian-code": "^1.0.5",
+    "i": "^0.3.7",
+    "npm": "^8.4.1"
   }
 }

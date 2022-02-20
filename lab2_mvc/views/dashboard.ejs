@@ -1,0 +1,15 @@
+<%- include('layout.ejs'); %>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <h3>My name is <%= user.name %>. I stay at <%= user.location %></h3>
+        </div>
+        <div class="col-12">
+            <a href="/logout">
+                <button type="submit" class="w-auto btn btn-primary btn-lg btn-block login-button">Logout</button>
+            </a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
